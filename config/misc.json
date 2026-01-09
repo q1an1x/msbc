@@ -2,6 +2,6 @@
   "ntp": { "enabled": true, "server": "time.lan.buni.es", "detour": "passthrough" },
   "experimental": {
     "cache_file": { "enabled": true },
-    "clash_api": { "external_controller": "10.1.100.1:80", "external_ui": "dashboard" }
+    "clash_api": { "external_controller": "10.10.0.1:80", "external_ui": "dashboard" }
   }
 }
