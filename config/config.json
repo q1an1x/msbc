@@ -1,0 +1,35 @@
+{
+  "inbounds": [
+    {
+      "type": "tun", "tag": "tun-in",
+      "interface_name": "tun0", "address": "10.1.100.100/26",
+      "mtu": 9000,
+      "auto_route": true, "auto_redirect": true,
+      "strict_route": true,
+      "route_address": [ "0.0.0.0/1", "128.0.0.0/1", "::/1", "8000::/1" ],
+      "route_exclude_address": [ "127.0.0.0/8", "::1/128",
+        "192.168.0.0/16", "172.16.0.0/12", "10.0.0.0/8", "fc00::/7"],
+      "endpoint_independent_nat": true,
+      "udp_timeout": "15m",
+      "stack": "gvisor"
+    },
+    {
+      "type": "direct", "tag": "dns-in",
+      "listen": "::", "listen_port": 53,
+      "network": "udp"
+    }
+  ],
+  "outbounds": [
+    { "type": "direct", "tag": "passthrough", "domain_resolver": "dns-local" },
+    { "type": "block", "tag": "block" },
+    { "type": "selector", "tag": "domestic", "outbounds": [ "proxy", "passthrough", "block" ] },
+    { "type": "selector", "tag": "default", "outbounds": [ "proxy", "passthrough", "block" ] },
+    { "type": "selector", "tag": "general-default", "outbounds": [ "proxy", "passthrough", "block" ] },
+    { "type": "selector", "tag": "google-tv-default", "outbounds": [ "proxy", "passthrough", "block" ] },
+    { "type": "selector", "tag": "ps-default", "outbounds": [ "proxy", "passthrough", "block" ] }
+  ],
+  "route": {
+    "default_interface": "eth0",
+    "default_domain_resolver": { "server": "dns-local" }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "dns": {
+    "rules": [
+      { "domain_suffix": "lan.buni.es", "server": "dns-local" },
+      { "source_ip_cidr": [ "10.2.5.0/24", "10.4.1.0/24" ], "server": "dns-local" },
+      {
+        "type": "logical", "mode": "and",
+        "rules": [
+          { "source_ip_cidr": "10.2.4.0/24" },
+          { "rule_set": "geosite-google", "invert": true }
+        ],
+        "server": "dns-local"
+      },
+
+      {
+        "rule_set": "geosite-category-ai-!cn",
+        "server": "dns-fakeip"
+      },
+
+      {
+        "rule_set": ["geosite-!cn", "geosite-cloudflare"],
+        "server": "dns-proxy"
+      },
+      { "rule_set": "geosite-cn", "server": "dns-local" },
+
+      {
+        "source_ip_cidr": [
+          "10.0.0.0/16",
+          "10.1.0.0/16",
+          "10.2.1.0/24",
+          "10.4.2.2/31"
+        ], "server": "dns-proxy"
+      },
+
+      { "server": "dns-local" }
+    ]
+  },
+  "route": {
+    "rules": [
+      { "source_ip_cidr": [ "10.2.2.0/24", "10.3.0.0/16" ], "outbound": "block" },
+
+      { "action": "sniff", "timeout": "1s" },
+      {
+        "type": "logical", "mode": "or",
+        "rules": [ { "protocol": "dns" }, { "port": 53 } ],
+        "action": "hijack-dns"
+      },
+
+      {
+        "source_ip_cidr": [ "10.2.5.0/24", "10.4.1.0/24", "10.1.200.0/24" ],
+        "outbound": "passthrough"
+      },
+      {
+        "source_ip_cidr": "10.2.4.0/24", "rule_set": "geosite-google",
+        "outbound": "proxy-guest"
+      },
+      {
+        "source_ip_cidr": "10.2.4.0/24",
+        "outbound": "passthrough"
+      },
+
+      {
+        "rule_set": "geosite-category-ai-!cn",
+        "outbound": "category-ai"
+      },
+
+      {
+        "rule_set": [
+          "geosite-!cn",
+          "geosite-cloudflare"
+        ], "outbound": "proxy"
+      },
+
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ], "outbound": "domestic"
+      },
+
+      {
+        "rule_set": [
+          "geosite-apple@cn",
+          "geosite-steam@cn"
+        ], "outbound": "services-domestic"
+      },
+
+      { "rule_set": "geosite-apple", "outbound": "apple" },
+      { "rule_set": "geosite-netflix", "outbound": "netflix" },
+
+      {
+        "rule_set": [
+          "geosite-apple-tvplus",
+          "geosite-steam"
+        ], "outbound": "proxy"
+      },
+
+      {
+        "source_ip_cidr": [
+          "10.0.0.0/16",
+          "10.1.0.0/16",
+          "10.2.1.0/24"
+        ], "outbound": "default"
+      },
+      {
+        "source_ip_cidr": [
+          "10.2.3.0/24",
+          "10.4.2.0/24"
+        ], "outbound": "passthrough"
+      },
+      { "source_ip_cidr": "10.4.2.1/32", "outbound": "ps-default" },
+      { "source_ip_cidr": "10.4.2.2/31", "outbound": "general-default" },
+      { "source_ip_cidr": "10.4.2.4/32", "outbound": "google-tv-default" },
+
+      { "outbound": "passthrough" }
+    ]
+  }
+}
