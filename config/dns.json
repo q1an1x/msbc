@@ -18,6 +18,8 @@
         "inet6_range": "fc00::/18"
       }
     ],
-    "independent_cache": true
+    "strategy": "prefer_ipv4",
+    "independent_cache": true,
+    "reverse_mapping": true
   }
 }
