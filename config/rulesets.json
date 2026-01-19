@@ -3,7 +3,7 @@
     "rule_set": [
       {
         "tag": "geoip-cn",
-        "url": "https://git.web.lan.buni.es/upstream/sing-geosite/raw/branch/rule-set/geoip-cn.srs",
+        "url": "https://git.web.lan.buni.es/upstream/sing-geoip/raw/branch/rule-set/geoip-cn.srs",
         "type": "remote", "format": "binary", "download_detour": "passthrough"
       },
       {
