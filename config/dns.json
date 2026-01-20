@@ -7,8 +7,8 @@
         "tls": { "enabled": true, "server_name": "dns.lan.buni.es" }
       },
       {
-        "type": "h3", "tag": "dns-proxy",
-        "server": "1.1.1.1", "path": "dns-query",
+        "type": "tls", "tag": "dns-proxy",
+        "server": "1.1.1.1",
         "tls": { "enabled": true, "server_name": "cloudflare-dns.com" },
         "detour": "proxy"
       },
