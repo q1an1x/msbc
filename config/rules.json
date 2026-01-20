@@ -20,7 +20,7 @@
 
       {
         "rule_set": ["geosite-!cn", "geosite-cloudflare"],
-        "server": "dns-proxy"
+        "server": "dns-proxy", "strategy": "ipv4_only"
       },
       { "rule_set": "geosite-cn", "server": "dns-local" },
 
@@ -30,7 +30,8 @@
           "10.1.0.0/16",
           "10.2.1.0/24",
           "10.4.2.2/31"
-        ], "server": "dns-proxy"
+        ],
+        "server": "dns-proxy", "strategy": "ipv4_only"
       },
 
       { "server": "dns-local" }
