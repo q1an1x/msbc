@@ -2,7 +2,8 @@
   "inbounds": [
     {
       "type": "tun", "tag": "tun-in",
-      "interface_name": "tun0", "address": "10.10.0.100/26",
+      "interface_name": "tun0",
+      "address": [ "10.10.0.100/26", "fd97:abb8:c312:f:1::1/80" ],
       "mtu": 9000,
       "auto_route": true, "auto_redirect": true,
       "strict_route": true,
@@ -15,8 +16,13 @@
     },
     {
       "type": "direct", "tag": "dns-in",
-      "listen": "10.10.0.1", "listen_port": 53,
-      "network": "udp"
+      "listen": "10.10.0.1",
+      "listen_port": 53, "network": "udp"
+    },
+    {
+      "type": "direct", "tag": "dns-in6",
+      "listen": "fd97:abb8:c312:f::1",
+      "listen_port": 53, "network": "udp"
     }
   ],
   "outbounds": [

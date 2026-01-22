@@ -2,14 +2,18 @@
   "dns": {
     "rules": [
       { "domain_suffix": "lan.buni.es", "server": "dns-local" },
-      { "source_ip_cidr": [ "10.2.5.0/24", "10.4.1.0/24" ], "server": "dns-local" },
+      { "source_ip_cidr": [
+          "10.2.5.0/24", "10.4.1.0/24",
+          "fd97:abb8:c312:5::/64", "fd97:abb8:c312:6::/64"
+        ], "server": "dns-local"
+      },
       {
         "type": "logical", "mode": "and",
         "rules": [
-          { "source_ip_cidr": "10.2.4.0/24" },
+          { "source_ip_cidr": [ "10.2.4.0/24", "fd97:abb8:c312:4::99/64" ] },
           { "rule_set": "geosite-google", "invert": true }
         ],
-        "server": "dns-local"
+        "server": "dns-local", "strategy": "prefer_ipv6"
       },
 
       {
@@ -22,19 +26,19 @@
         "rule_set": ["geosite-!cn", "geosite-cloudflare"],
         "server": "dns-proxy", "strategy": "ipv4_only"
       },
-      { "rule_set": "geosite-cn", "server": "dns-local" },
+      { "rule_set": "geosite-cn", "server": "dns-local", "strategy": "prefer_ipv6" },
 
       {
         "source_ip_cidr": [
-          "10.0.0.0/16",
-          "10.1.0.0/16",
-          "10.2.1.0/24",
+          "10.0.0.0/16", "fd97:abb8:c312::99/64",
+          "10.1.0.0/16", "fd97:abb8:c312:1::99/64",
+          "10.2.1.0/24", "fd97:abb8:c312:2::99/64",
           "10.4.2.2/31"
         ],
         "server": "dns-proxy", "strategy": "ipv4_only"
       },
 
-      { "server": "dns-local" }
+      { "server": "dns-local", "strategy": "prefer_ipv6" }
     ]
   },
   "route": {
