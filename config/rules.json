@@ -33,7 +33,8 @@
           "10.0.0.0/16", "fd97:abb8:c312::99/64",
           "10.1.0.0/16", "fd97:abb8:c312:1::99/64",
           "10.2.1.0/24", "fd97:abb8:c312:2::99/64",
-          "10.4.2.2/31"
+          "10.4.2.2/31",
+          "10.20.0.128/25"
         ],
         "server": "dns-proxy", "strategy": "ipv4_only"
       },
@@ -117,6 +118,7 @@
       { "source_ip_cidr": "10.4.2.1/32", "outbound": "ps-default" },
       { "source_ip_cidr": "10.4.2.2/31", "outbound": "general-default" },
       { "source_ip_cidr": "10.4.2.4/32", "outbound": "google-tv-default" },
+      { "source_ip_cidr": "10.20.0.128/25", "outbound": "ipsec-default" },
 
       { "outbound": "passthrough" }
     ]

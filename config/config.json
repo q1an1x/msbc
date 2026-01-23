@@ -32,7 +32,8 @@
     { "type": "selector", "tag": "default", "outbounds": [ "proxy", "passthrough", "block" ] },
     { "type": "selector", "tag": "general-default", "outbounds": [ "proxy", "passthrough", "block" ] },
     { "type": "selector", "tag": "google-tv-default", "outbounds": [ "proxy", "passthrough", "block" ] },
-    { "type": "selector", "tag": "ps-default", "outbounds": [ "proxy", "passthrough", "block" ] }
+    { "type": "selector", "tag": "ps-default", "outbounds": [ "proxy", "passthrough", "block" ] },
+    { "type": "selector", "tag": "ipsec-default", "outbounds": [ "proxy", "passthrough", "block" ] }
   ],
   "route": {
     "default_interface": "eth0",
