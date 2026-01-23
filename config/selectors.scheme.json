@@ -6,6 +6,7 @@
 
     { "type": "selector", "tag": "apple", "outbounds": [ "passthrough", "block" ] },
     { "type": "selector", "tag": "netflix", "outbounds": [ "passthrough", "block" ] },
-    { "type": "selector", "tag": "category-ai", "outbounds": [ "passthrough", "block" ] }
+    { "type": "selector", "tag": "category-ai", "outbounds": [ "passthrough", "block" ] },
+    { "type": "selector", "tag": "playstation", "outbounds": [ "passthrough", "block" ] }
   ]
 }

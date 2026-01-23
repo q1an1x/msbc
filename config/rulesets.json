@@ -63,6 +63,12 @@
       },
 
       {
+        "tag": "geosite-playstation",
+        "url": "https://git.web.lan.buni.es/upstream/sing-geosite/raw/branch/rule-set/geosite-playstation.srs",
+        "type": "remote", "format": "binary", "download_detour": "passthrough"
+      },
+
+      {
         "tag": "geosite-google",
         "url": "https://git.web.lan.buni.es/upstream/sing-geosite/raw/branch/rule-set/geosite-google.srs",
         "type": "remote", "format": "binary", "download_detour": "passthrough"
