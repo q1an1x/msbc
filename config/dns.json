@@ -10,7 +10,7 @@
         "type": "tls", "tag": "dns-proxy",
         "server": "1.1.1.1",
         "tls": { "enabled": true, "server_name": "cloudflare-dns.com" },
-        "detour": "proxy"
+        "detour": "dns-default"
       },
       {
         "type": "fakeip", "tag": "dns-fakeip",

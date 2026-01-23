@@ -29,6 +29,7 @@
     { "type": "direct", "tag": "passthrough", "domain_resolver": "dns-local" },
     { "type": "block", "tag": "block" },
     { "type": "selector", "tag": "domestic", "outbounds": [ "proxy", "passthrough", "block" ] },
+    { "type": "selector", "tag": "dns-default", "outbounds": [ "proxy", "passthrough", "block" ] },
     { "type": "selector", "tag": "default", "outbounds": [ "proxy", "passthrough", "block" ] },
     { "type": "selector", "tag": "general-default", "outbounds": [ "proxy", "passthrough", "block" ] },
     { "type": "selector", "tag": "google-tv-default", "outbounds": [ "proxy", "passthrough", "block" ] },
