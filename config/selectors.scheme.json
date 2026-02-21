@@ -4,6 +4,7 @@
     { "type": "selector", "tag": "proxy-guest", "outbounds": [ "passthrough", "block" ] },
     { "type": "selector", "tag": "services-domestic", "outbounds": [ "passthrough", "block" ] },
 
+    { "type": "selector", "tag": "apple-media", "outbounds": [ "passthrough", "block" ] },
     { "type": "selector", "tag": "apple", "outbounds": [ "passthrough", "block" ] },
     { "type": "selector", "tag": "netflix", "outbounds": [ "passthrough", "block" ] },
     { "type": "selector", "tag": "category-ai", "outbounds": [ "passthrough", "block" ] },

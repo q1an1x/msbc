@@ -72,21 +72,6 @@
         "outbound": "category-ai"
       },
 
-      { "rule_set": "geosite-apple", "outbound": "apple" },
-      { "rule_set": "geosite-netflix", "outbound": "netflix" },
-
-      {
-        "source_ip_cidr": "10.4.2.1/32", "rule_set": "geosite-playstation",
-        "outbound": "playstation"
-      },
-
-      {
-        "rule_set": [
-          "geosite-apple-tvplus",
-          "geosite-steam"
-        ], "outbound": "proxy"
-      },
-
       {
         "rule_set": [
           "geosite-apple@cn",
@@ -94,6 +79,26 @@
         ], "outbound": "services-domestic"
       },
 
+      {
+        "domain_suffix": [
+          "itunes.apple.com",
+          "fitness.apple.com"
+        ], "outbound": "apple-media"
+      },
+      {
+        "rule_set": [
+          "geosite-apple-tvplus",
+          "geosite-steam"
+        ], "outbound": "proxy"
+      },
+
+      { "rule_set": "geosite-apple", "outbound": "apple" },
+      { "rule_set": "geosite-netflix", "outbound": "netflix" },
+
+      {
+        "source_ip_cidr": "10.4.2.1/32", "rule_set": "geosite-playstation",
+        "outbound": "playstation"
+      },
       {
         "rule_set": [
           "geosite-!cn",
