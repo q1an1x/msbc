@@ -11,18 +11,7 @@
       "route_exclude_address": [ "127.0.0.0/8", "::1/128",
         "192.168.0.0/16", "172.16.0.0/12", "10.0.0.0/8", "fc00::/7"],
       "endpoint_independent_nat": true,
-      "udp_timeout": "15m",
-      "stack": "gvisor"
-    },
-    {
-      "type": "direct", "tag": "dns-in",
-      "listen": "10.10.0.1",
-      "listen_port": 53, "network": "udp"
-    },
-    {
-      "type": "direct", "tag": "dns-in6",
-      "listen": "fd97:abb8:c312:f::1",
-      "listen_port": 53, "network": "udp"
+      "udp_timeout": "15m"
     }
   ],
   "outbounds": [
@@ -30,14 +19,10 @@
     { "type": "block", "tag": "block" },
     { "type": "selector", "tag": "domestic", "outbounds": [ "proxy", "passthrough", "block" ] },
     { "type": "selector", "tag": "dns-default", "outbounds": [ "proxy", "passthrough", "block" ] },
-    { "type": "selector", "tag": "default", "outbounds": [ "proxy", "passthrough", "block" ] },
-    { "type": "selector", "tag": "general-default", "outbounds": [ "proxy", "passthrough", "block" ] },
-    { "type": "selector", "tag": "google-tv-default", "outbounds": [ "proxy", "passthrough", "block" ] },
-    { "type": "selector", "tag": "ps-default", "outbounds": [ "proxy", "passthrough", "block" ] },
-    { "type": "selector", "tag": "ipsec-default", "outbounds": [ "proxy", "passthrough", "block" ] }
+    { "type": "selector", "tag": "default", "outbounds": [ "proxy", "passthrough", "block" ] }
   ],
   "route": {
-    "default_interface": "eth0",
+    "auto_detect_interface": true,
     "default_domain_resolver": { "server": "dns-local" }
   }
 }

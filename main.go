@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -329,7 +330,7 @@ func main() {
 
 	log.Printf("wrote config/selectors.json")
 
-	err = exportConfig("config", "/etc/sing-box")
+	err = exportConfig("config", getDefaultExportDir())
 	if err != nil {
 		log.Fatalf("failed to export configs: %v", err)
 	}
@@ -402,6 +403,23 @@ func appendUnique(dst []string, src []string) []string {
 	}
 
 	return dst
+}
+
+func getDefaultExportDir() string {
+	if v := os.Getenv("SING_BOX_CONFIG_DIR"); v != "" {
+		return v
+	}
+
+	switch runtime.GOOS {
+	case "windows":
+		appData := os.Getenv("APPDATA")
+		if appData != "" {
+			return filepath.Join(appData, "sing-box", "config")
+		}
+		return filepath.Join(".", "sing-box-config")
+	default:
+		return "/etc/sing-box"
+	}
 }
 
 func exportConfig(srcDir, dstDir string) error {
