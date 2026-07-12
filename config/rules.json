@@ -75,18 +75,35 @@
 
       {
         "domain_suffix": [
+          "xboxlive.cn",
+          "assets1.xboxlive.com",
+          "assets2.xboxlive.com",
+          "assets3.xboxlive.com",
+          "download.xbox.com",
+          "dl.delivery.mp.microsoft.com",
+          "officecdn.microsoft.com"
+        ], "outbound": "domestic"
+      },
+
+      {
+        "domain_keyword": [
+          "uplaypc"
+        ], "outbound": "domestic"
+      },
+
+      {
+        "domain_suffix": [
           "steamserver.net",
           "cm.steampowered.com"
         ], "outbound": "steam-api"
       },
 
       {
-        "rule_set": [
-          "geosite-apple@cn",
-          "geosite-steam@cn"
-        ], "outbound": "services-domestic"
+        "domain_suffix": [
+          "bag.itunes.apple.com",
+          "music.apple.com"
+        ], "outbound": "apple-music"
       },
-
       {
         "domain_suffix": [
           "itunes.apple.com",
@@ -95,8 +112,16 @@
       },
       {
         "rule_set": [
+          "geosite-apple@cn",
+          "geosite-steam@cn",
+          "geosite-ubisoft@cn"
+        ], "outbound": "services-domestic"
+      },
+      {
+        "rule_set": [
           "geosite-apple-tvplus",
-          "geosite-steam"
+          "geosite-steam",
+          "geosite-ubisoft"
         ], "outbound": "proxy"
       },
 

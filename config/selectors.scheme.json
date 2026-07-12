@@ -4,10 +4,13 @@
     { "type": "selector", "tag": "proxy-guest", "outbounds": [ "passthrough", "block" ] },
     { "type": "selector", "tag": "services-domestic", "outbounds": [ "passthrough", "block" ] },
 
-    { "type": "selector", "tag": "apple-media", "outbounds": [ "passthrough", "block" ] },
-    { "type": "selector", "tag": "apple", "outbounds": [ "passthrough", "block" ] },
-    { "type": "selector", "tag": "netflix", "outbounds": [ "passthrough", "block" ] },
-    { "type": "selector", "tag": "category-ai", "outbounds": [ "passthrough", "block" ] },
-    { "type": "selector", "tag": "playstation", "outbounds": [ "passthrough", "block" ] }
+    { "type": "selector", "tag": "apple-media", "outbounds": [ "passthrough", "proxy", "block" ] },
+    { "type": "selector", "tag": "apple", "outbounds": [ "passthrough", "proxy", "block" ] },
+    { "type": "selector", "tag": "apple-music", "outbounds": [ "apple-media", "apple" ] },
+    { "type": "selector", "tag": "netflix", "outbounds": [ "passthrough", "proxy", "block" ] },
+    { "type": "selector", "tag": "category-ai", "outbounds": [ "passthrough", "proxy", "block" ] },
+    { "type": "selector", "tag": "playstation", "outbounds": [ "passthrough", "proxy", "block" ] },
+    { "type": "selector", "tag": "steam-general", "outbounds": [ "passthrough", "proxy", "block" ] },
+    { "type": "selector", "tag": "steam-api", "outbounds": [ "passthrough", "proxy", "block" ] }
   ]
 }
